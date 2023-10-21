@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import UserList from './components/UserList';
+import UserForm from './components/UserForm';
+import UserAddForm from './components/UserAddForm';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-function App() {
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <Routes>
+      <Route exact path="/" element={<UserList/>} />
+      <Route exact path="/edit-user/:id" element={<UserForm/>} />
+      <Route exact path="/add-user" element={<UserAddForm/>} />
+      {/* Add more routes as needed */}
+    </Routes>
+  </Router>
+    // <div>
+    //   <h1>User Management Dashboard</h1>
+    //   <UserList users={users} handleEdit={handleEdit} handleDelete={handleDelete} />
+    //   <UserForm formData={formData} handleSubmit={handleSubmit} handleChange={handleChange} />
+    // </div>
   );
-}
+};
 
 export default App;
